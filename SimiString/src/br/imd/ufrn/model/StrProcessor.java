@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * Classe responsável pelo processamento de strings e aplicação de hash na string processada.
+ * Classe responsável pelo processamento de strings. Simplifica e codifica strings
  * 
  * @author Paulo Jr
  */
@@ -57,6 +57,12 @@ public class StrProcessor {
 		return String.join(" ", finalTextWords);
 	}
 	
+	/**
+	 * Codifica uma string em sha-1
+	 * @param text texto a ser codificado
+	 * @return hash da string passada como parâmetro
+	 * @throws NoSuchAlgorithmException
+	 */
 	public String textCrypt(String text) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-1");
 		
