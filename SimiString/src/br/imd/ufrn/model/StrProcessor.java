@@ -35,7 +35,7 @@ public class StrProcessor {
 	public String textSimplify(String text, int wordLen) {
 		String finalText = text;
 		finalText = finalText.toLowerCase();
-		finalText = removePunctuationAccent(finalText);
+		finalText = removePunctuationAccentNumbers(finalText);
 		
 		//O(n), segundo https://softwareengineering.stackexchange.com/questions/331909/whats-the-complexity-of-javas-string-split-function
 		String finalTextWordsArray[] = finalText.split(" ");
@@ -80,7 +80,7 @@ public class StrProcessor {
 	}
 
 	
-	private String removePunctuationAccent(String text) {
+	private String removePunctuationAccentNumbers(String text) {
 		String finalText = text;
 		
 		// As duas próximas linhas foram soluções encontradas em 
@@ -88,7 +88,7 @@ public class StrProcessor {
 		finalText = Normalizer.normalize(finalText, Normalizer.Form.NFD);
 		finalText = finalText.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 		
-		finalText = finalText.replaceAll("[:,.!?\\-]", "");
+		finalText = finalText.replaceAll("[1234567890:,.!?\\-]", "");
 		return finalText;
 	}
 	
