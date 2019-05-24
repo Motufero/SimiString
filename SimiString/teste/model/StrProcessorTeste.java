@@ -1,6 +1,8 @@
 package model;
 import java.security.NoSuchAlgorithmException;
 
+
+import br.imd.ufrn.model.CSVReader;
 import br.imd.ufrn.model.StrProcessor;
 
 public class StrProcessorTeste {
@@ -10,5 +12,8 @@ public class StrProcessorTeste {
 		String text = "Isso aqui é um texto para conferir a funcionalidade da classe strprocessor. 10, 15, 28, 56.";
 		String simplerText = processor.textSimplify(text, 0);
 		System.out.println(simplerText);
+		
+		CSVReader fake = new CSVReader();
+		fake.readCSV();
 	}
 }
