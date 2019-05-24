@@ -38,7 +38,8 @@ public class CSVReader {
 					contador++;
 				} else {
 					linha = br.readLine();
-					System.out.println("Boato " +contador+ linha);
+					System.out.println("Boato " +contador+ ": " + linha);
+					contador ++;
 				}
 // eu estava usando esse codigo para separar apenas o boato, ele conseguia rodar,
 //mas de vez enquando disparava um nullPointerException q eu n estava conseguindo				
