@@ -23,9 +23,8 @@ public class CSVReader {
 	public void readCSV() {
 		BufferedReader br = null;
 		String linha ="";
-		String cabecalho ="";
 		int contador =0;
-//		String csvDivisor = ",https:"; para isolar apenas o boato.
+		String csvDivisor = ",https:"; //para isolar apenas o boato.
 		
 		
 		try {
@@ -33,32 +32,19 @@ public class CSVReader {
 			while((linha = br.readLine()) != null) {
 				
 				if(contador==0) {
-					cabecalho = br.readLine();
-					System.out.println("Cabeçalho-> " + cabecalho);
+					System.out.println("Cabeçalho-> " + linha);
 					contador++;
-				} else {
-					linha = br.readLine();
-					System.out.println("Boato " +contador+ ": " + linha);
-					contador ++;
+				}else {
+				String boatoCompleto = "";
+				String[]boato = linha.split(csvDivisor);
+				
+				boatoCompleto = boato[0];
+				contador++;
+			
+				System.out.println("Boato: " + contador +"  " + boatoCompleto.toLowerCase());
 				}
-// eu estava usando esse codigo para separar apenas o boato, ele conseguia rodar,
-//mas de vez enquando disparava um nullPointerException q eu n estava conseguindo				
-//corrigir				
-//				} else {
-//				String boatoCompleto = "";
-//				linha = br.readLine();
-//				String[] boato = linha.split(csvDivisor);
-//				
-//				boatoCompleto = boato[0];
-//				i++;
-//			}
-//			System.out.println("Boato: " + i +"  " + boatoCompleto.toLowerCase());
-//		}
-//	}
-				
-				
-				
 			}
+				
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
