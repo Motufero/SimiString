@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 
 
-public class CSVReader {
+public class CsvReader {
 
 	/**
 	 * Função para fazer a leitura, para isso foi criado uma pasta com 
