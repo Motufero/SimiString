@@ -10,7 +10,7 @@ import java.util.Date;
 public class News {
 	private String texto, url;
 	private Date data;
-
+	
 	public String getTexto() {
 		return texto;
 	}
