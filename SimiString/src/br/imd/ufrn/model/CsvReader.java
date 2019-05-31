@@ -12,15 +12,16 @@ import java.io.IOException;
  */
 
 
-public class CSVReader {
+public class CsvReader {
 
 	/**
 	 * Função para fazer a leitura, para isso foi criado uma pasta com 
 	 * os arquivos csv disponibilizados no sigaa
 	 * 
+	 * @param filePath caminho para o arquivo csv. Não é necessário caminho absoluto.
 	 */
 	
-	public void readCSV() {
+	public void readCsv(String filePath) {
 		BufferedReader br = null;
 		String linha ="";
 		int contador =0;
@@ -28,7 +29,7 @@ public class CSVReader {
 		
 		
 		try {
-			br = new BufferedReader(new FileReader("CSVFile/boatos.csv"));
+			br = new BufferedReader(new FileReader(filePath));
 			while((linha = br.readLine()) != null) {
 				
 				if(contador==0) {
