@@ -22,7 +22,7 @@ import br.imd.ufrn.model.StrProcessor;
 		int semelhanca;
 		semelhanca=simil.checkDistance(simplerText.toCharArray(), simplerText2.toCharArray());
 		System.out.println("Numero de modificações é: " + semelhanca);
-		System.out.println("indice de similaridade: " + simil.indiceSimil(semelhanca, simplerText.length(), simplerText2.length()));
+		System.out.println("indice de similaridade é: " + simil.indiceSimil(semelhanca, simplerText.length(), simplerText2.length()));
 		}
 	}
 

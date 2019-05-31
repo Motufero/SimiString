@@ -5,6 +5,7 @@ package br.imd.ufrn.model;
  * Classe responsável por verificar similaridade entre duas Strings
  * Codigo obtido em: https://github.com/mission-peace/interview/blob/master/src/com/interview/dynamic/EditDistance.java
  *
+ * @author Saulo Gabriel
  */
 
 

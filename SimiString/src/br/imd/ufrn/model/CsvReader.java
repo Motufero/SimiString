@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Classe responsável pela leitura do arquivo csv, no momento ela so imprime os boatos, 
  * mas será util para separar os boatos dos links e timestamps usando csvDivisor
  * 
+ * @author Saulo Gabriel
  */
 
 
