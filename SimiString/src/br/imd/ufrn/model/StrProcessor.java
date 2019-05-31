@@ -27,10 +27,10 @@ public class StrProcessor {
 	}
 	
 	/**
-	 * Simplifica um texto retirando palavras pequenas, repetidas, transformando em lowercase etc.
+	 * Simplifica um texto
 	 * @param text texto a ser simplificado
-	 * @param wordLen número mínimo de caracteres que uma string deve possuir
-	 * @return texto simplificado
+	 * @param wordLen número mínimo de caracteres que as palavras do texto simplificado devem possuir
+	 * @return texto lowercase, sem pontuação e acentuação, sem palavras pequenas, e palavras organizadas em ordem alfabética
 	 */
 	public String textSimplify(String text, int wordLen) {
 		String finalText = text;

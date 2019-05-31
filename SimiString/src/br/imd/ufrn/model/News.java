@@ -4,7 +4,7 @@ import java.util.Date;
 /**
  * 
  * Classe para armazenar dados de uma notícia
- * @author pj
+ * @author Paulo Jr
  * 
  */
 public class News {
