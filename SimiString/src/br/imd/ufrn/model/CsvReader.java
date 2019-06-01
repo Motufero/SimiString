@@ -4,11 +4,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 /**
  * Classe responsável pela leitura do arquivo csv, no momento ela so imprime os boatos, 
  * mas será util para separar os boatos dos links e timestamps usando csvDivisor
  * 
+ * @author Saulo Gabriel
  */
 
 
