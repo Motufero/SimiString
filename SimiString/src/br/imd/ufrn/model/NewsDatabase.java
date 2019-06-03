@@ -88,8 +88,8 @@ public class NewsDatabase {
 		
 		for(News databaseNews : database.values()) {
 			
-			int distance = lev.checkDistance(aNews.getTexto().toCharArray(), databaseNews.getTexto().toCharArray());
-			float similarity = lev.indiceSimil(distance, aNews.getTexto().length(), databaseNews.getTexto().length());
+			int distance = lev.checkDistance(aNews.getTexto(), databaseNews.getTexto());
+			double similarity = lev.indiceSimil();
 			
 			if( similarity >= minPer ) {
 				similarNews.add(databaseNews);
