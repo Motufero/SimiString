@@ -9,7 +9,16 @@ import java.util.Date;
  */
 public class News {
 	private String texto, url;
-	private Date data;
+	private Date date;
+	
+	public News() {
+		
+	}
+	public News(String texto, String url, Date date) {
+		this.texto = texto;
+		this.url = url;
+		this.date = date;
+	}
 	
 	public String getTexto() {
 		return texto;
@@ -23,10 +32,10 @@ public class News {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public Date getData() {
-		return data;
+	public Date getDate() {
+		return date;
 	}
-	public void setData(Date data) {
-		this.data = data;
+	public void setDate(Date data) {
+		this.date = data;
 	}
 }
