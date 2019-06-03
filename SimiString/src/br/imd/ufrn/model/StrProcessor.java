@@ -15,7 +15,7 @@ import java.util.LinkedList;
  * @author Paulo Jr
  */
 
-public class StrProcessor {
+public class StrProcessor implements StrTreatment{
 	/**
 	 * Simplifica um texto retirando palavras pequenas, repetidas, transformando em lowercase etc.
 	 * @param text texto a ser simplificado
