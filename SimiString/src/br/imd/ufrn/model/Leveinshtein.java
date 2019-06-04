@@ -9,8 +9,9 @@ package br.imd.ufrn.model;
  */
 
 
-public class Leveinshtein {
-
+public class Leveinshtein extends SimiAlg{
+	private int levelVar = 0;
+	private String lText1, lText2;
 	
 /**
  * 	
@@ -20,8 +21,15 @@ public class Leveinshtein {
  * texto 1 em texto 2
  */
 	
-	public int checkDistance(char[] str1, char[] str2){
-	        int temp[][] = new int[str1.length+1][str2.length+1];
+
+	public int checkDistance (String text1, String text2) {
+		lText1 = text1;
+		lText2 = text2;
+		
+		char[] str1 = text1.toCharArray();
+		char[] str2 = text2.toCharArray();
+		
+		int temp[][] = new int[str1.length+1][str2.length+1];
 	        
 	        for(int i=0; i < temp[0].length; i++){
 	            temp[0][i] = i;
@@ -40,7 +48,7 @@ public class Leveinshtein {
 	                }
 	            }
 	        }
-	        
+	        levelVar = temp[str1.length][str2.length];
 	        return temp[str1.length][str2.length];
 	        
 	    }
@@ -50,7 +58,7 @@ public class Leveinshtein {
 	 * 
 	 */
 	
-	public int min(int val1, int val2, int val3) {
+	private int min(int val1, int val2, int val3) {
 		if (val1 <= val2 && val1 <= val3) {
 			return val1;
 		}
@@ -69,15 +77,27 @@ public class Leveinshtein {
 	 * @param tamaho2 tamanho da segunda String
 	 * @return
 	 */
-	public float indiceSimil(int leveinVar, int tamanho1, int tamanho2) {
+	
+	
+	public double indiceSimil() {
+		int tamanho1 = lText1.length();
+		int tamanho2 = lText2.length();
 		if(tamanho1>=tamanho2) {
-			return ((float)tamanho1/(tamanho1+leveinVar));
+			return ((double)tamanho1/(tamanho1+levelVar));
 		} else {
-			return ((float)tamanho2/(tamanho1+leveinVar));
+			return ((double)tamanho2/(tamanho1+levelVar));
 		}
 		
 	}
-	
+
+	@Override
+	public double getSimilarity() {
+		// TODO Auto-generated method stub
+		similarity = indiceSimil();
+		return super.getSimilarity();
+	}
+
+
 	
 	
 }

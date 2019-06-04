@@ -24,8 +24,8 @@ public class NewsDatabaseTeste {
 		System.out.println("\nNotícias do banco de dados e sua similaridade com a notícia a ser buscada pelo método Leveinshtein:");
 		Leveinshtein lev = new Leveinshtein();
 		for(News n : database.getNews()) {
-			int distance = lev.checkDistance( sample.toCharArray(), n.getTexto().toCharArray() );
-			float similarity = lev.indiceSimil( distance, sample.length(), n.getTexto().length() );
+			int distance = lev.checkDistance( sample, n.getTexto());
+			double similarity = lev.indiceSimil();
 			
 			System.out.printf("%.05f", similarity);
 			System.out.println( " <- " + n.getTexto());
