@@ -1,47 +1,69 @@
 package br.imd.ufrn.model;
 
+import java.io.IOException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.Scanner;
+import java.util.ArrayList;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+/**
+ * Realiza operações de webscrapping que importam ao projeto
+ * 
+ * @author pj
+ */
 
 public class WebScrapper {
 	
-	private URL url;
-	private String _page;
+	private String url;
+	private Document _doc;
+	private Elements _paragraphs;
 	
-	public WebScrapper(URL url) {
-		this.url = url;
-		URLConnection connection;
-		Scanner scanner;
-		try {
-			connection = url.openConnection();
-			scanner = new Scanner(connection.getInputStream());
-			scanner.useDelimiter("\\Z");
-			_page = scanner.next();
-			scanner.close();
-		}catch ( Exception ex ) {
-		    ex.printStackTrace();
-		}
+	/**
+	 * Chama setUrl com url recebida
+	 * 
+	 * @param url Endereço do site
+	 * @throws Exception Caso haja algum erro no parsing da página, ou a url, uma exceção será lançada
+	 */
+	public WebScrapper(String url) throws Exception {
+		setUrl(url);
 	}
 	
-	public void setUrl(URL url) {
+	/**
+	 * Atribui valor à variável url. Cria conecção com a url, fetcha e parsa a url extraindo as tags <p> da página.
+	 * 
+	 * @param url Endereço do site
+	 * @throws Exception Caso haja algum erro no parsing da página, ou a url, uma exceção será lançada
+	 */
+	public void setUrl(String url) throws Exception{
+
 		this.url = url;
-	}
-	
-	public URL getUrl() {
-		return url;
+		this._doc = Jsoup.connect(url).get();
+		_paragraphs = _doc.select("p");
+		
 	}
 	/**
-	 * @return Retorna o conteúdo da próxima tag <p></p> do site
-	 * @throws Exception
+	 * Retorna valor da url
+	 * @return url
 	 */
-	public String getNextParagraph() throws Exception {
-		if(url == null)
-		{
-			throw new Exception("Nenhuma url foi especificada");
+	public String getUrl() {
+		return url;
+	}
+	
+	/**
+	 * @return Retorna todas as tags <p> da página
+	 */
+	public ArrayList<String> getParagraphs() {
+		
+		ArrayList<String> paragraphs = new ArrayList<String>();
+		
+		for( Element p : _paragraphs ) {
+			paragraphs.add( p.text() );
 		}
 		
+		return paragraphs;
 		
-		return null;
 	}
 }

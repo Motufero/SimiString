@@ -4,19 +4,26 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
 
+import br.imd.ufrn.model.WebScrapper;
+
 public class WebScrapperTeste {
 	public static void main(String args[]) {
-		String content = null;
-		URLConnection connection = null;
+		
+		//Deve conter http:// ou https:// pra funcionar
+		String website = "https://www.gazetadopovo.com.br/republica/governo-regulamentar-direito-greve-servidor/";
+		
 		try {
-		  connection =  new URL("http://www.google.com").openConnection();
-		  Scanner scanner = new Scanner(connection.getInputStream());
-		  scanner.useDelimiter("\\Z");
-		  content = scanner.next();
-		  scanner.close();
-		}catch ( Exception ex ) {
-		    ex.printStackTrace();
+			WebScrapper scrapper = new WebScrapper(website);
+			
+			for(String p : scrapper.getParagraphs())
+			{
+				if(p.length() > 200)
+				{
+					System.out.println(p);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		System.out.println(content);
 	}
 }
