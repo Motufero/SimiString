@@ -85,10 +85,11 @@ public class NewsDatabase {
 	public ArrayList<News> getNewsLeveinshtein( News aNews, double minPer ) {
 		Leveinshtein lev = new Leveinshtein();
 		ArrayList<News> similarNews = new ArrayList<News>();
+		StrProcessor strp = new StrProcessor();
 		
 		for(News databaseNews : database.values()) {
 			
-			int distance = lev.checkDistance(aNews.getTexto(), databaseNews.getTexto());
+			int distance = lev.checkDistance(strp.textSimplify(aNews.getTexto(), 3), strp.textSimplify(databaseNews.getTexto(), 3));
 			double similarity = lev.indiceSimil();
 			
 			if( similarity >= minPer ) {
@@ -97,6 +98,28 @@ public class NewsDatabase {
 		}
 		
 		return similarNews;	
+	}
+	
+	public double firstSimilarLeveinshtein(News aNews, double minPer) {
+		Leveinshtein lev = new Leveinshtein();
+		StrProcessor strp = new StrProcessor();
+		
+		double maxSimilarity = 0;
+		for(News databaseNews : database.values()) {
+			
+			int distance = lev.checkDistance(strp.textSimplify(aNews.getTexto(), 3), strp.textSimplify(databaseNews.getTexto(), 3));
+			double similarity = lev.indiceSimil();
+			
+			if(maxSimilarity < similarity) {
+				maxSimilarity = similarity;
+			}
+			
+			if( similarity >= minPer ) {
+				return similarity;
+			}
+		}
+		
+		return maxSimilarity;	
 	}
 
 }

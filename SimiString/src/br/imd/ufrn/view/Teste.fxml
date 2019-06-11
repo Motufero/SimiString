@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.imd.ufrn.controller.SimiController">
+   <center>
+      <Pane prefHeight="532.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="490.0" layoutY="122.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="138.0" text="Busca automatica" />
+            <TextField fx:id="csvTextField" focusTraversable="false" layoutX="174.0" layoutY="22.0" prefHeight="24.0" prefWidth="204.0" promptText="Base de dados csv" />
+            <TextField fx:id="siteTextField" focusTraversable="false" layoutX="174.0" layoutY="60.0" prefHeight="24.0" prefWidth="204.0" promptText="Endereço web de notícia" />
+            <Button layoutX="388.0" layoutY="60.0" mnemonicParsing="false" onAction="#addNewsLink" prefHeight="24.0" prefWidth="79.0" text="Adicionar" />
+            <Button layoutX="261.0" layoutY="256.0" mnemonicParsing="false" onAction="#analisarNews" prefHeight="50.0" prefWidth="141.0" text="Analisar noticias" />
+            <Slider fx:id="simiSlider" layoutX="214.0" layoutY="221.0" onMouseClicked="#updateSliderCounter" onMouseDragged="#updateSliderCounter" prefHeight="15.0" prefWidth="232.0" />
+            <Label layoutX="259.0" layoutY="207.0" text="Nivel de similaridade:" />
+            <Label fx:id="simiSliderValue" layoutX="314.0" layoutY="236.0" text="0.0" />
+            <ListView fx:id="linkListView" layoutX="171.0" layoutY="94.0" prefHeight="87.0" prefWidth="303.0" />
+            <Button layoutX="388.0" layoutY="22.0" mnemonicParsing="false" onAction="#readCsv" text="Ler" />
+            <ListView fx:id="simiNews" layoutX="173.0" layoutY="358.0" prefHeight="147.0" prefWidth="310.0" />
+            <Label layoutX="283.0" layoutY="336.0" prefHeight="14.0" prefWidth="101.0" text="Sites similares" />
+            <Label layoutX="446.0" layoutY="25.0" prefHeight="19.0" prefWidth="132.0" text="Noticias carregadas:" />
+            <Label fx:id="newsNumber" layoutX="578.0" layoutY="28.0" prefHeight="14.0" prefWidth="42.0" text="0" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

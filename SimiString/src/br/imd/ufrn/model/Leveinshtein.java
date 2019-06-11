@@ -85,7 +85,7 @@ public class Leveinshtein extends SimiAlg{
 		if(tamanho1>=tamanho2) {
 			return ((double)tamanho1/(tamanho1+levelVar));
 		} else {
-			return ((double)tamanho2/(tamanho1+levelVar));
+			return ((double)tamanho2/(tamanho2+levelVar));
 		}
 		
 	}
