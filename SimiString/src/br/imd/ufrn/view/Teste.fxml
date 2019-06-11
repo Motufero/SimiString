@@ -9,7 +9,7 @@
    <center>
       <Pane prefHeight="532.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="490.0" layoutY="122.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="138.0" text="Busca automatica" />
+            <Button layoutX="490.0" layoutY="122.0" mnemonicParsing="false" onAction="#buscaAutomatica" prefHeight="31.0" prefWidth="138.0" text="Busca automatica" />
             <TextField fx:id="csvTextField" focusTraversable="false" layoutX="174.0" layoutY="22.0" prefHeight="24.0" prefWidth="204.0" promptText="Base de dados csv" />
             <TextField fx:id="siteTextField" focusTraversable="false" layoutX="174.0" layoutY="60.0" prefHeight="24.0" prefWidth="204.0" promptText="Endereço web de notícia" />
             <Button layoutX="388.0" layoutY="60.0" mnemonicParsing="false" onAction="#addNewsLink" prefHeight="24.0" prefWidth="79.0" text="Adicionar" />
