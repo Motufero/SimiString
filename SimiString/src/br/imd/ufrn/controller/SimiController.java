@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import br.imd.ufrn.model.CsvReader;
+import br.imd.ufrn.model.LinkSearcher;
 import br.imd.ufrn.model.News;
 import br.imd.ufrn.model.NewsDatabase;
 import br.imd.ufrn.model.WebScrapper;
@@ -140,6 +141,9 @@ public class SimiController {
 				scrapper = new WebScrapper(link);
 				ArrayList<String> paragraphs = scrapper.getParagraphs();
 	    		for(String p : paragraphs) {
+	    			if(p.length() < 300) {
+	    				continue;
+	    			}
 	    			News linkNews = new News( p, link, null);
 	    			double firstFindSimilarity = newsDatabase.firstSimilarLeveinshtein(linkNews, minSimilarity);
 	    			System.out.println("Similaridade maxima encontrada: " + firstFindSimilarity + " | Texto analisado:" + p);
@@ -159,6 +163,18 @@ public class SimiController {
 			}
     		
     	}
+    }
+    
+    public void buscaAutomatica() {
+    	ArrayList<News> news = newsDatabase.getNews();
+    	ArrayList<String> cachorro = new ArrayList<String>();
+    	for(int i = 0; i < 2 && i < news.size(); i++) {
+    		cachorro.addAll(LinkSearcher.getLinkSearchResults( LinkSearcher.shortenText( news.get(i).getTexto() ) ));
+    	}
+    	
+    	newsLinks.addAll(cachorro);
+    	ObservableList<String> names = FXCollections.observableArrayList(newsLinks);
+    	linkListView.setItems(FXCollections.observableArrayList(names));
     	
     	
     }
