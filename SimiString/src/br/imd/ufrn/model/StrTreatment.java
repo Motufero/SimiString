@@ -2,6 +2,12 @@ package br.imd.ufrn.model;
 
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Interface que as funções de tratamento de Strings devem implementar
+ * @author Saulo Gabriel
+ * 
+ */
+
 
 public interface StrTreatment {
 

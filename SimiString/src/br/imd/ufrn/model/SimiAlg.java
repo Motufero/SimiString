@@ -1,5 +1,14 @@
 package br.imd.ufrn.model;
 
+
+/**
+ * 
+ * Classe abstrata da qual todas as funções de similaridade devem herdar
+ * @author Saulo Gabriel
+ * 
+ */
+
+
 public abstract class SimiAlg {
 	protected double similarity;
 	
