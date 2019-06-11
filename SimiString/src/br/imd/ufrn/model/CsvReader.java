@@ -4,61 +4,67 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 /**
- * Classe responsável pela leitura do arquivo csv, no momento ela so imprime os boatos, 
- * mas será util para separar os boatos dos links e timestamps usando csvDivisor
+ * Leitura e parsing de csv
  * 
- * @author Saulo Gabriel
+ * @author Saulo Gabriel, Paulo Jr
  */
 
 
 public class CsvReader {
-
+	
+	String filePath;
+	BufferedReader br;
+	
 	/**
-	 * Função para fazer a leitura, para isso foi criado uma pasta com 
-	 * os arquivos csv disponibilizados no sigaa
+	 * Chama setFilePath com filePath de parâmetro
 	 * 
-	 * @param filePath caminho para o arquivo csv. Não é necessário caminho absoluto.
+	 * @param filePath Caminho para o arquivo. Não precisa ser caminho absoluto.
+	 * @throws FileNotFoundException
 	 */
-	public void readCsv(String filePath) {
-		BufferedReader br = null;
-		String linha ="";
-		int contador =0;
-		String csvDivisor = ",https:"; //para isolar apenas o boato.
+	public CsvReader(String filePath) throws FileNotFoundException {
+		setFilePath(filePath);
 		
-		
-		try {
-			br = new BufferedReader(new FileReader(filePath));
-			while((linha = br.readLine()) != null) {
-				
-				if(contador==0) {
-					System.out.println("Cabeçalho-> " + linha);
-					contador++;
-				}else {
-				String boatoCompleto = "";
-				String[]boato = linha.split(csvDivisor);
-				
-				boatoCompleto = boato[0];
-				contador++;
-			
-				System.out.println("Boato: " + contador +"  " + boatoCompleto.toLowerCase());
-				}
-			}
-				
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if  (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				}			
+	}
+	
+	/**
+	 * Atribui valor a filePath e abre o buffer para ler o csv
+	 * @param filePath Caminho para o arquivo. Não precisa ser caminho absoluto.
+	 * @throws FileNotFoundException
+	 */
+	public void setFilePath(String filePath) throws FileNotFoundException {
+		this.filePath = filePath;
+		this.br = new BufferedReader(new FileReader(filePath));
+	}
+	
+	public String getFilePath() {
+		return this.filePath;
+	}
+	
+	/**
+	 * Retorna a próxima linha do csv
+	 * @return Lista contendo os campos da linha
+	 * @throws IOException
+	 */
+	public ArrayList<String> getNextRecord() throws IOException{
+		ArrayList<String> values = new ArrayList<String>();
+		String line = br.readLine();
+		if(line!=null)
+		{
+			try (Scanner rowScanner = new Scanner( line )) {
+			    rowScanner.useDelimiter(",");
+			    while (rowScanner.hasNext()) {
+			        values.add(rowScanner.next());
+			    }
 			}
 		}
+	    return values;
 	}
+
+	
+	
+}
